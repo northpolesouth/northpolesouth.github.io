@@ -7,8 +7,6 @@ description: "How North Pole South uses Claude in VS Code to make Light-O-Rama s
 
 *How I got the four singing trees at North Pole South to sing along to any song in the show, and how you can do the same with your own singing faces.*
 
-<!-- David: add a photo or short clip of the singing trees here if you like, e.g. ![The singing trees](images/singing-trees.jpg) -->
-
 ---
 
 ## The idea
@@ -34,13 +32,13 @@ The display has four singing trees: **Zuzu**, **Elden**, **Felix** and **Ralphie
 
 | Row | What it does |
 | --- | --- |
-| Tree Outline | the tree's body; its colour shows who's awake |
+| Tree Outline | the tree's body; its color shows who's awake |
 | Bow (Zuzu) or Star (others) | the accessory, follows the outline |
 | Eyes Open, Eyes Closed | blinking, and dozing |
 | Mouth Closed | rest position |
 | Mouth AI, E, OU, L, WQ, MBP, FV, etc | the mouth shapes |
 
-A mouth shape is just one row lit at a time. Those eight mouths are the classic **Preston Blair** set that cartoon animators use, so every speech sound maps straight onto one row.
+A mouth shape is just one row lit at a time. Those eight mouths are based on the classic **Preston Blair** set that cartoon animators use (with O and U sharing one mouth), so every speech sound maps straight onto one row.
 
 ### The phoneme file
 
@@ -50,7 +48,7 @@ The one setting that matters: **always 20 frames per second.** One frame is 0.05
 
 ### The cast list
 
-A small `faces.json` file says which tree sings which `.pgo`, what colour each tree is when awake and asleep, and when the backup trees wake up. Here's the one for *Believe*:
+A small `faces.json` file says which tree sings which `.pgo`, what color each tree is when awake and asleep, and when the backup trees wake up. Here's the one for *Believe*:
 
 ```json
 {
@@ -97,8 +95,8 @@ There are two halves. First, turn the song into timing. Then, turn the timing in
 
 7. **Survey the sequence.** Claude checks that the FaceV2 rows exist and whether anything is already on them. If the mouths are already full (a purchased sequence with faces, say), it asks before replacing anything.
 8. **Write the faces.** One script reads `faces.json` and the `.pgo` and writes the mouth, eye and outline effects. A dry run first prints when each tree is awake, so I can sanity-check it against the song.
-9. **Verify.** The script re-reads its own output and confirms that every other prop and every other part of the file is byte-for-byte unchanged. If not, it says "VERIFY FAILED" and nothing gets installed.
-10. **I look at it in LOR.** Only after I've watched it does it get copied into my live Sequences folder, with a backup of the old version kept beside it.
+9. **Verify.** The script re-reads its own output and confirms that every other prop and every other part of the file is byte-for-byte unchanged. If not, it says "VERIFY FAILED" and the file isn't used.
+10. **Check it in LOR, then copy it back yourself.** Open the copy in LOR and watch it with the music. After you're satisfied with the results, copy it back to your live Sequences folder so you can add it to your show.
 
 Separation and transcription took about four minutes for *Believe*. The rest takes seconds.
 
@@ -109,11 +107,11 @@ Separation and transcription took about four minutes for *Believe*. The rest tak
 These are the conventions we settled on. They live in the script, so every song gets them automatically:
 
 - **Zuzu (with the bow) is the female lead. Elden is the male lead.**
-- A tree that isn't singing **dozes**: outline at 15% in a soft sleep colour, eyes shut, mouth closed, at 30%.
+- A tree that isn't singing **dozes**: outline at 15% in a soft sleep color, eyes shut, mouth closed, at 30%.
 - A tree wakes **0.6 seconds before** its first phrase and fades back to sleep over 0.8 seconds after its last.
 - Mouths and open eyes are white. Eyes **blink every 3.5 to 6.5 seconds** while awake.
 - Vowels held for **0.8 seconds or longer** shimmer, so big notes look big.
-- Each tree gets **its own awake colour** taken from the song's palette, so you can tell them apart from the street. For *Believe* that was the yard's red, green, blue and gold.
+- Each tree gets **its own awake color** taken from the song's palette, so you can tell them apart from the street. For *Believe* that was the yard's red, green, blue and gold.
 - For big moments (a "Hey!", a key change, the finale) all four trees wake up.
 
 Casting so far:
@@ -196,7 +194,7 @@ You'll need singing-face props in LOR (any set of plain-channel rows per mouth s
 
 ### A starter prompt for Claude
 
-Open your show folder in VS Code and paste this into Claude. Replace the parts in [brackets] first.
+Open your **project folder** in VS Code. This is the folder where you made copies of your sequences (see [Getting Started](getting-started.md)). **Never open your live Sequences folder in VS Code.** Then paste this into Claude. Replace the parts in [brackets] first.
 
 ```text
 I run a Christmas light show with Light-O-Rama [version, e.g. S6 Pro]. I have singing-face
@@ -218,7 +216,8 @@ Rules that matter to me:
   ask me to paste one, and remind me to write out every repeated chorus.
 - Change only the face rows. After writing, re-read the file and prove every other prop and
   section is unchanged. Keep a backup of anything you overwrite.
-- Don't install anything into my live Sequences folder until I've looked at it in LOR.
+- NEVER open, change, save or copy anything in my live LOR Sequences folder. EVER.
+  Work only on the copies in this project folder. I'll copy finished files back myself.
 - Use free tools that run on this computer. Ask before installing anything.
 
 Please start by looking at the sequence and telling me what's on my face rows now.

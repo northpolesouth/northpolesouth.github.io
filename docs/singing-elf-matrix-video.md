@@ -50,7 +50,7 @@ Claude already knows the project. It built the lip-sync timing for the singing t
 
 ### Why Codex does the video
 
-**Codex is better at image generation.** Codex is OpenAI's coding agent, and it has OpenAI's image models behind it. The elf is a picture problem first: a character design, a set of mouth shapes, clean pixel art at a tiny size. In my experience Codex produces better artwork than Claude does, and it can also write and run the script that turns that artwork into a video.
+**Codex is better at artwork.** Codex is OpenAI's coding agent. The elf is a picture problem first: a character design, a set of mouth shapes, clean pixel art at a tiny size. In my experience Codex produces better artwork than Claude does, and it can also write and run the script that turns that artwork into a video.
 
 So Claude plans and Codex draws. Each one does the half it's best at.
 
@@ -159,7 +159,7 @@ If something's off, tell Claude what you saw. Claude decides whether the timing 
 
 ## Step 5: Put it in the show
 
-Copy the 64×64 MP4 to the folder where LOR looks for media, then add it to the song's sequence. Select the entire matrix row, and add a movie motion effecting, select the newly generated video file as the source. Then play the sequence. The elf on the matrix and the four singing trees should all sing together.
+Copy the 64×64 MP4 to the folder where LOR looks for media, then add it to your `2026-` copy of the song's sequence: select the entire matrix row, add a **Movie** motion effect, and choose the new video file as its source. Then play the sequence. The elf on the matrix and the four singing trees should all sing together.
 
 ---
 
@@ -181,8 +181,8 @@ Both are paid services, so check current plans on each company's site.
 
 - **Claude:** I use Claude Code in VS Code on my Claude subscription.
 - **Codex:** Codex comes with a ChatGPT subscription from OpenAI.
- 
- I have the $20 monthly subscription for each.
+
+I have the $20 monthly subscription for each.
 
 Everything else is free: Python, ffmpeg, and Papagayo's phoneme format.
 

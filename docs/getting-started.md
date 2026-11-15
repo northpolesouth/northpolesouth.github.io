@@ -133,20 +133,21 @@ Both helpers can work in the same project folder. They don't talk to each other,
 
 Python is the programming language the helpers write their scripts in. Your computer needs Python installed to run those scripts. You won't write any Python yourself.
 
-1. Go to [python.org/downloads](https://www.python.org/downloads/) and click the yellow **Download Python** button. It picks the right version for Windows.
-2. Run the file you downloaded.
-3. **Important:** on the very first screen, tick the box at the bottom that says **Add python.exe to PATH**. If you miss this, other programs can't find Python.
-4. Click **Install Now**. When it finishes, click **Close**.
+**Install it by following Python's own instructions.** Python's installer changes from time to time, and the official instructions are always up to date:
 
-**Check that it worked.** In VS Code, open **View → Terminal**, type this, and press Enter:
+- Download page: [python.org/downloads/windows](https://www.python.org/downloads/windows/)
+- Step-by-step guide: [Using Python on Windows](https://docs.python.org/3/using/windows.html)
 
-```text
-python --version
-```
+Or let Claude do it, the same way as ffmpeg in the next step: *"Please install Python on this computer, following python.org's current instructions. Explain each step before you run it."*
 
-You should see something like `Python 3.13.1`. If the Microsoft Store opens instead, Python isn't on the PATH yet. See [Troubleshooting](#troubleshooting) below.
+### What matters for our projects
 
-> **Python packages.** The projects also use free add-ons for Python, called *packages*, for jobs like separating vocals from music or recognizing speech. You don't install these by hand. Claude installs the ones each project needs, inside that project's folder, and asks you first. Some are large downloads, measured in gigabytes.
+Whichever way you install it, check these four things:
+
+1. **Python must work from the terminal.** The AI helpers run Python by typing `python` in VS Code's terminal. When you're done, close and reopen VS Code, open **View → Terminal**, type `python --version`, and press Enter. You should see something like `Python 3.15.2`. If you get an error, or the Microsoft Store opens, see [Troubleshooting](#troubleshooting).
+2. **The newest version isn't always the right one.** Some of the tools these projects use, such as the vocal separation and speech recognition tools, can take months to support a brand-new Python version. If a project needs a particular version, Claude will tell you and can install it next to the one you have. Both can live on the same computer.
+3. **Packages are Claude's job.** The projects also use free add-ons for Python, called *packages*. You don't install these by hand. Claude installs the ones each project needs inside that project's folder, and asks you first.
+4. **Leave room on your disk.** Some packages, especially the ones for separating vocals and recognizing speech, are large downloads measured in gigabytes.
 
 ---
 
@@ -217,8 +218,8 @@ The helpers can run commands on your computer, so they ask before doing anything
 
 ## Troubleshooting
 
-**Typing `python` opens the Microsoft Store.**
-Python isn't on the PATH. Run the Python installer again, choose **Modify**, click **Next**, and tick **Add Python to environment variables**. Then close and reopen VS Code. Or ask Claude: *"Python isn't on my PATH. Please help me fix it."*
+**Typing `python` gives an error or opens the Microsoft Store.**
+Windows can't find Python yet. First close every VS Code window and open it again. If it still doesn't work, check the [Using Python on Windows](https://docs.python.org/3/using/windows.html) guide, or ask Claude: *"Typing python in the terminal doesn't work. Please help me fix it."*
 
 **A tool works in one window but not in VS Code.**
 VS Code only notices newly installed tools when it starts. Close every VS Code window and open it again.

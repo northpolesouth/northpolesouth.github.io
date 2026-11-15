@@ -7,8 +7,6 @@ description: "How North Pole South built northpolesouth.org: a real-time Now Pla
 
 *How I built [northpolesouth.org](https://northpolesouth.org) for the North Pole South Christmas light show in Apache, Oklahoma, and how you can build one too.*
 
-<!-- David: add a photo of the display here if you like, e.g. ![North Pole South at night](images/display.jpg) -->
-
 ---
 
 ## The idea
@@ -117,8 +115,6 @@ Connecting the domain to the website, in general terms:
 3. In **GoDaddy → My Products → your domain → DNS**, add those records exactly as Firebase shows them. Remove any old GoDaddy "parked" or "forwarding" records that conflict.
 4. Wait. DNS changes can take from a few minutes to a few hours. Firebase then issues a free **HTTPS certificate** automatically.
 
-<!-- David: add anything specific you ran into here, e.g. whether you set up both "www" and the bare domain. -->
-
 > **Tip:** Copy the record values exactly from the Firebase console rather than from a tutorial. They can differ per project.
 
 ---
@@ -145,6 +141,8 @@ The Realtime Database has **rules** that decide who can read and write. Ours say
 - Every write must match a strict format: a song title under a set length, a progress time within range, and so on. Anything unexpected is rejected.
 
 So even if someone studies the website's code, they can't change what visitors see, and the database can't be filled with junk.
+
+> **Using Google Analytics? Add a privacy notice.** Google's Analytics terms require sites that use it to tell visitors so, including that it uses cookies. A short "Privacy" section or page on your site covers it. Ask Claude to draft one, and check it against Google's current requirements.
 
 > **Keep secrets out of shared folders.** The bridge's password lives only on the show computer, outside the project folder, outside OneDrive or Dropbox, and outside GitHub. The Firebase settings inside the website (the "web config") are designed to be public; the rules are what protect you.
 
@@ -200,6 +198,7 @@ I built this with **Claude Code**, Anthropic's AI coding assistant, running as a
 - **QR code on the LED matrix:** a 64×64 QR code that points to the site, shown on my pixel matrix during the show.
   - It uses strong error correction, 2×2 LEDs per QR square, and a lit border.
   - It works best at reduced brightness, held still for 10–15 seconds.
+  - **Safety first:** many visitors watch from their cars. Put "Please park before using your phone" next to any QR code or web address on your display.
 - **Honest estimates:** "estimated around" times for upcoming songs, calculated from the real song lengths plus the measured one-second gap.
 
 ### Ideas we considered but skipped
@@ -213,7 +212,7 @@ I built this with **Claude Code**, Anthropic's AI coding assistant, running as a
 
 | Item | Cost |
 | --- | --- |
-| Domain (GoDaddy) | $9.99 for a one-year registration of northpolesouth.org |
+| Domain (GoDaddy) | $9.99 for a one-year registration of northpolesouth.org (a first-year price; renewals usually cost more) |
 | Firebase (Hosting, Database, Auth, Analytics) | Free (Spark plan) |
 | Visual Studio Code | Free |
 | Claude Code | Included with my $20/month Claude plan |
