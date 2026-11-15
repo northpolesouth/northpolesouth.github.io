@@ -2,6 +2,9 @@ site_name: North Pole South
 site_description: Documentation for the North Pole South light show
 site_url: https://northpolesouth.github.io/
 repo_url: https://github.com/northpolesouth/northpolesouth.github.io
+copyright: >
+  These guides describe what worked for my show. Use them at your own risk;
+  I assume no responsibility for any problems. <a href="/disclaimer/">Full disclaimer</a>.
 
 theme:
   name: material
@@ -15,9 +18,14 @@ theme:
 
 nav:
   - Home: index.md
+  - Getting Started (Setup): getting-started.md
   - Live LOR Play List: live-lor-playlist.md
   - Singing Faces with Claude: singing-faces.md
   - Singing Elf Matrix Video: singing-elf-matrix-video.md
+  - Disclaimer: disclaimer.md
+
+markdown_extensions:
+  - admonition
 
 plugins:
   - search
