@@ -1,0 +1,21 @@
+site_name: North Pole South
+site_description: Documentation for the North Pole South light show
+site_url: https://northpolesouth.github.io/
+repo_url: https://github.com/northpolesouth/northpolesouth.github.io
+
+theme:
+  name: material
+  palette:
+    primary: green
+    accent: red
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+
+nav:
+  - Home: index.md
+  - Live LOR Play List: live-lor-playlist.md
+
+plugins:
+  - search
