@@ -1,7 +1,5 @@
 # North Pole South
 
-Welcome to the North Pole South light show documentation.
-
 This year marks our 20th year of using Light-O-Rama to run our Christmas light show in Apache, Oklahoma. I remember the very first sequence I created from scratch: *Believe*, by Josh Groban. It took FOREVER! I spent every free minute for a week on it.
 
 Technology has changed drastically since then. When we started, LED Christmas lights were a rare, pricey novelty, and smart pixels didn't exist. The only thing we knew about AI was the Will Smith movie *I, Robot*.
