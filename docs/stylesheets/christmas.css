@@ -1,0 +1,68 @@
+/* North Pole South Christmas theme for MkDocs Material */
+@import url("https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap");
+
+:root > * {
+  --md-primary-fg-color: #b3121f;        /* Santa red header */
+  --md-primary-fg-color--light: #d62839;
+  --md-primary-fg-color--dark: #8a0d17;
+  --md-accent-fg-color: #1b7a3a;         /* pine green on hover */
+  --md-typeset-a-color: #1b6e34;         /* pine green links */
+  --nps-green: #14532d;
+  --nps-gold: #f5c542;
+}
+
+/* Candy-cane stripe under the header */
+.md-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 6px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #d62839 0 10px,
+    #ffffff 10px 20px
+  );
+  pointer-events: none;
+}
+
+/* Festive page titles */
+.md-typeset h1 {
+  font-family: "Mountains of Christmas", cursive;
+  font-weight: 700;
+  font-size: 2.4em;
+  color: var(--nps-green);
+  letter-spacing: 0.01em;
+}
+
+.md-typeset h2 {
+  color: var(--nps-green);
+  border-bottom: 2px solid #e8d9a8;
+  padding-bottom: 0.2em;
+}
+
+/* Gold star on the header logo */
+.md-header__button.md-logo svg {
+  fill: var(--nps-gold);
+}
+
+/* Evergreen footer */
+.md-footer-meta {
+  background-color: var(--nps-green);
+}
+
+/* Tables: soft red header row */
+.md-typeset table:not([class]) th {
+  background-color: #fbe9eb;
+}
+
+/* Snowfall canvas sits behind clicks, above the page */
+#nps-snow {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}

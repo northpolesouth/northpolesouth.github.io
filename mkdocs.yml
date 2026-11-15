@@ -9,8 +9,11 @@ copyright: >
 theme:
   name: material
   palette:
-    primary: green
-    accent: red
+    primary: custom
+    accent: custom
+  icon:
+    logo: material/pine-tree
+  favicon: assets/favicon.svg
   features:
     - navigation.sections
     - navigation.top
@@ -23,6 +26,12 @@ nav:
   - Singing Faces with Claude: singing-faces.md
   - Singing Elf Matrix Video: singing-elf-matrix-video.md
   - Disclaimer: disclaimer.md
+
+extra_css:
+  - stylesheets/christmas.css
+
+extra_javascript:
+  - javascripts/snow.js
 
 markdown_extensions:
   - admonition
