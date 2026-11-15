@@ -28,8 +28,8 @@ I use a different AI for each.
 
 This is the kind of output the process produces on the matrix: a compact, mouth-synced elf with blinking eyes and a subtle hat pompom wobble.
 
-<video controls width="640" playsinline>
-  <source src="assets/videos/talking-elf-solar-power.mp4" type="video/mp4">
+<video controls width="640" playsinline style="image-rendering: pixelated;">
+  <source src="../assets/videos/talking-elf-solar-power.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
