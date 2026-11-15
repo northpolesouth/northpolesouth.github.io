@@ -7,7 +7,7 @@ description: "A plain-English primer for Light-O-Rama users: what VS Code is, ho
 
 *A plain-English guide for Light-O-Rama users who have never written code and don't plan to start.*
 
-The other pages on this site ([Singing Faces](singing-faces.md), [Singing Elf Matrix Video](singing-elf-matrix-video.md), and the [Live Playlist](live-lor-playlist.md)) all assume one setup on your show computer. This page walks you through that setup step by step. Plan on about an hour, mostly spent waiting for downloads.
+The other pages on this site ([Singing Faces](singing-faces.md), [Singing Elf Matrix Video](singing-elf-matrix-video.md), and the [Live Playlist](live-lor-playlist.md)) all assume one setup on your show computer. The Live Playlist also needs one extra tool, Node.js, covered at the end of Step 7. This page walks you through that setup step by step. Plan on about an hour, mostly spent waiting for downloads.
 
 You don't need to understand code. The AI helpers write it and run it. Your job is to describe what you want, answer their questions, and check the results.
 
@@ -20,7 +20,7 @@ You don't need to understand code. The AI helpers write it and run it. Your job 
 
     1. **Copy** the sequence and preview files you need into your project folder. Copy them; don't move them. **Leave your audio files where they are.** The copied sequences still point to the music in its usual place, and nothing in these projects changes audio files. The helpers only read them. To be safe, tell the helper the audio is read-only.
     2. **Rename the copies** so they can never be mistaken for the originals. I put a `2026-` prefix on every one, so `Believe.lms` becomes `2026-Believe.lms`.
-    3. **Work only on the copies.** Tell the AI helper at the start: *"Never open, change or save anything in my LOR Sequences folder. Only work on the files in this project folder."*
+    3. **Work only on the copies.** Tell the AI helper at the start: *"Never open, change, save or copy anything in my live LOR Sequences folder. Only work on the files in this project folder."*
     4. **Check the result in LOR** before it goes anywhere near the show.
     5. **Copy the finished file into LOR yourself.** Thanks to the prefix, it sits next to your original instead of replacing it, so you can always go back.
 
@@ -171,6 +171,12 @@ winget install --id Gyan.FFmpeg -e
 
 Then close and reopen VS Code, and check it with `ffmpeg -version`.
 
+### Only for the Live Playlist: Node.js
+
+Skip this unless you're building the [Live Playlist](live-lor-playlist.md) website. That project runs on **Node.js** (version 20 or newer) instead of Python. The singing faces and singing elf don't need it.
+
+Install it by following the official instructions at [nodejs.org](https://nodejs.org/en/download), choosing the version marked **LTS** (long-term support). Or ask Claude to install it for you. Claude installs the Firebase tool the project uses when it's needed.
+
 ---
 
 ## Step 8: Say hello
@@ -191,7 +197,7 @@ The helpers can run commands on your computer, so they ask before doing anything
 
 - **Read the box before you click.** If it says "install", "delete", "overwrite" or "publish" and you didn't expect that, click **No** and ask why.
 - **Work on copies, never your live sequences.** Keep your real LOR files out of reach and give the helpers renamed copies (`2026-Believe.lms`) in the project folder.
-- **Tell them your rules up front.** For example: *"Never open or change anything in my LOR Sequences folder. Ask before installing anything."* They'll follow those rules.
+- **Tell them your rules up front.** For example: *"Never open, change, save or copy anything in my live LOR Sequences folder. Ask before installing anything."* They'll follow those rules.
 - **Ask them to explain.** "What does that command do?" is always a fair question. You'll get a plain answer.
 - **Keep backups.** Copy your sequence files somewhere safe before any project touches them. The helpers are careful, but backups are cheap.
 - **Check the results yourself.** Open the sequence in LOR, or watch the video with sound. The helpers can prove a file is the right *size*. Only you can tell whether it *looks* right.

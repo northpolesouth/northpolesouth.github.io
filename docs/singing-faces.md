@@ -17,10 +17,10 @@ I wanted to be able to say "add singing faces to *Believe*" and get back a seque
 
 - the lead tree's mouth moves in time with the singer, word for word,
 - the eyes blink naturally and long held notes shimmer,
-- the other trees doze, then wake up and join in on the choruses,
+- the other trees doze, then wake up for the choruses,
 - **nothing else in the sequence changes**, so my existing effects are safe.
 
-That's now how it works. The first full run was Josh Groban's *Believe* in November 2026. I watched it in LOR, approved it, and it went into the show the same day.
+That's now how it works. The first song done start to finish with the finished process was Josh Groban's *Believe*, in November 2026. I watched it in LOR, approved it, and it went into the show the same day.
 
 ---
 
@@ -96,7 +96,7 @@ There are two halves. First, turn the song into timing. Then, turn the timing in
 7. **Survey the sequence.** Claude checks that the FaceV2 rows exist and whether anything is already on them. If the mouths are already full (a purchased sequence with faces, say), it asks before replacing anything.
 8. **Write the faces.** One script reads `faces.json` and the `.pgo` and writes the mouth, eye and outline effects. A dry run first prints when each tree is awake, so I can sanity-check it against the song.
 9. **Verify.** The script re-reads its own output and confirms that every other prop and every other part of the file is byte-for-byte unchanged. If not, it says "VERIFY FAILED" and the file isn't used.
-10. **Check it in LOR, then copy it back yourself.** Open the copy in LOR and watch it with the music. After you're satisfied with the results, copy it back to your live Sequences folder so you can add it to your show.
+10. **I check it in LOR, then copy it back myself.** I open the copy in LOR and watch it with the music. After I'm satisfied with the results, I copy it back to my live Sequences folder so I can add it to the show.
 
 Separation and transcription took about four minutes for *Believe*. The rest takes seconds.
 
@@ -175,12 +175,14 @@ Most of the work was in Half 1. Sung vocals are much harder to time than speech.
 
 Once the timing exists, it can drive more than the trees. Two experiments:
 
-- **The tree face, drawn on the window matrix.** Claude traced each FaceV2 tree's outline, eyes and mouths onto our 64x64 window matrix as custom pixel shapes, then copied the tree's face effects onto them. Same timing, bigger face.
-- **A singing elf video.** The `.pgo` becomes a frame-by-frame timing list, and a short animated elf is rendered to match it, then played as a movie on the matrix. The rule there: the timing list is the only source of timing, and the renderer never adjusts it.
+- **The tree face, drawn on the window matrix.** Claude traced each FaceV2 tree's outline, eyes and mouths onto our 64×64 window matrix as custom pixel shapes, then copied the tree's face effects onto them. Same timing, bigger face.
+- **A singing elf video.** The `.pgo` becomes a frame-by-frame timing list, and a short animated elf is rendered to match it, then played as a movie on the matrix. The rule there: the timing list is the only source of timing, and the renderer never adjusts it. Codex draws and renders the elf; see [Singing Elf Matrix Video](singing-elf-matrix-video.md) for the full story.
 
 ---
 
 ## Want to try it?
+
+New to this? Start with [Getting Started](getting-started.md) to set up VS Code, Claude, Python and ffmpeg.
 
 You'll need singing-face props in LOR (any set of plain-channel rows per mouth shape will do; ours follow the Preston Blair shapes), Visual Studio Code with the **Claude Code** extension, and the MP3s for your show.
 

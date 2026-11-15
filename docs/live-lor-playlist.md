@@ -232,6 +232,8 @@ I built this with **Claude Code**, Anthropic's AI coding assistant, running as a
 
 ## Want to build your own?
 
+New to this? Start with [Getting Started](getting-started.md) to set up VS Code and Claude. This project also needs **Node.js**; see the note there.
+
 A rough checklist:
 
 1. Make sure your show runs from the **LOR Scheduled Show Player**, and that its status service answers on the show computer.

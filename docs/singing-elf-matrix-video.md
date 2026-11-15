@@ -199,6 +199,8 @@ Everything else is free: Python, ffmpeg, and Papagayo's phoneme format.
 
 ## Want to try it?
 
+New to this? Start with [Getting Started](getting-started.md) to set up VS Code, Claude, Codex, Python and ffmpeg.
+
 You need a pixel matrix in your LOR show, a song with clear vocals, its lyrics, and accounts with both Claude and OpenAI. If you already have singing faces with Papagayo timing, you're halfway there.
 
 ### A starter prompt for Claude
