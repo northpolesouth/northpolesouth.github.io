@@ -17,6 +17,7 @@ nav:
   - Home: index.md
   - Live LOR Play List: live-lor-playlist.md
   - Singing Faces with Claude: singing-faces.md
+  - Singing Elf Matrix Video: singing-elf-matrix-video.md
 
 plugins:
   - search
