@@ -20,7 +20,7 @@ I thought it would be cool if anyone watching could pull out their phone and see
 - a search box to find out whether a song is in the show and roughly when it's coming up,
 - which FM station to tune to, and the show schedule.
 
-Nobody should have to install an app or sign up. A QR code on the display, or the address on a sign, takes them straight to the page.
+Nobody should have to install an app or sign up. A sign at the road with a QR code and the web address takes them straight to the page.
 
 I've been a Light-O-Rama user almost from the beginning. By trade I'm a technical writer, not a web developer. This primer covers what I learned, the pieces I used, and how I worked with an AI coding assistant (Claude, inside VS Code) to build it.
 
@@ -195,14 +195,13 @@ I built this with **Claude Code**, Anthropic's AI coding assistant, running as a
 
 - **Google Analytics:** visit counts, what people search for (including songs I don't have, which is useful for next year), Facebook clicks, and song ratings.
 - **👍 / 👎 on Now Playing:** one vote per song per night per phone, sent to Analytics. No accounts, no database writes from visitors.
-- **QR code on the LED matrix:** a 64×64 QR code that points to the site, shown on my pixel matrix during the show.
-  - It uses strong error correction, 2×2 LEDs per QR square, and a lit border.
-  - It works best at reduced brightness, held still for 10–15 seconds.
-  - **Safety first:** many visitors watch from their cars. Put "Please park before using your phone" next to any QR code or web address on your display.
+- **Sign at the road:** a sign with a QR code and the web address, so visitors can find the site.
+  - **Safety first:** many visitors watch from their cars. Put "Please park before using your phone" on the sign.
 - **Honest estimates:** "estimated around" times for upcoming songs, calculated from the real song lengths plus the measured one-second gap.
 
-### Ideas we considered but skipped
+### Ideas we tried or skipped
 
+- **QR code on the LED matrix:** we built a 64×64 QR code for the pixel matrix. It looked right, but phones wouldn't scan it, so we went with a sign at the road instead.
 - **Album artwork:** too few of my MP3s had embedded art to be worth it.
 - **Saving every search in our own database:** we kept it simple and safe; Analytics covers it.
 
@@ -242,7 +241,7 @@ A rough checklist:
 4. Write strict **database rules**: public read for one record, write only for the bridge.
 5. Set up the **bridge** on the show computer and have Windows start it automatically.
 6. Build the **website**: Now Playing, Up Next, search, schedule, how to listen.
-7. **Test with real shows**, then deploy and put a QR code or sign on your display.
+7. **Test with real shows**, then deploy and put up a sign at the road with a QR code and the web address.
 
 ### A starter prompt for Claude
 

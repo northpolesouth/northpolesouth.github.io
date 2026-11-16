@@ -19,7 +19,7 @@ You don't need to understand code. The AI helpers write it and run it. Your job 
     Do what I do instead:
 
     1. **Copy** the sequence and preview files you need into your project folder. Copy them; don't move them. **Leave your audio files where they are.** The copied sequences still point to the music in its usual place, and nothing in these projects changes audio files. The helpers only read them. To be safe, tell the helper the audio is read-only.
-    2. **Rename the copies** so they can never be mistaken for the originals. I put a `2026-` prefix on every one, so `Believe.lms` becomes `2026-Believe.lms`.
+    2. **Rename the copies** so they can never be mistaken for the originals. I put a `2026-` prefix on every one, so `Believe.loredit` becomes `2026-Believe.loredit`.
     3. **Work only on the copies.** Tell the AI helper at the start: *"Never open, change, save or copy anything in my live LOR Sequences folder. Only work on the files in this project folder."*
     4. **Check the result in LOR** before it goes anywhere near the show.
     5. **Copy the finished file into LOR yourself.** Thanks to the prefix, it sits next to your original instead of replacing it, so you can always go back.
@@ -196,7 +196,7 @@ You're ready. Head to [Singing Faces with Claude](singing-faces.md) for a first 
 The helpers can run commands on your computer, so they ask before doing anything that matters. You'll see an approval box describing what they want to do.
 
 - **Read the box before you click.** If it says "install", "delete", "overwrite" or "publish" and you didn't expect that, click **No** and ask why.
-- **Work on copies, never your live sequences.** Keep your real LOR files out of reach and give the helpers renamed copies (`2026-Believe.lms`) in the project folder.
+- **Work on copies, never your live sequences.** Keep your real LOR files out of reach and give the helpers renamed copies (`2026-Believe.loredit`) in the project folder.
 - **Tell them your rules up front.** For example: *"Never open, change, save or copy anything in my live LOR Sequences folder. Ask before installing anything."* They'll follow those rules.
 - **Ask them to explain.** "What does that command do?" is always a fair question. You'll get a plain answer.
 - **Keep backups.** Copy your sequence files somewhere safe before any project touches them. The helpers are careful, but backups are cheap.
