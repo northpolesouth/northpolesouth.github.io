@@ -11,7 +11,7 @@ description: "How North Pole South uses Claude in VS Code to make Light-O-Rama s
 
 ## The idea
 
-Singing faces are the part of the show people point at. Purchased sequences sometimes include them, but most of my songs didn't, and hand-placing mouth shapes in the Light-O-Rama Sequence Editor takes hours per song.
+Singing faces are the part of the show people point at. Hand-placing mouth shapes in the Light-O-Rama Sequence Editor takes hours per song, and most of my songs had no faces at all. Animators solved this problem decades ago with a standard set of mouth positions and a standard way to break words into sounds, so I built on those.
 
 I wanted to be able to say "add singing faces to *Believe*" and get back a sequence where:
 
@@ -38,7 +38,47 @@ The display has four singing trees: **Zuzu**, **Elden**, **Felix** and **Ralphie
 | Mouth Closed | rest position |
 | Mouth AI, E, OU, L, WQ, MBP, FV, etc | the mouth shapes |
 
-A mouth shape is just one row lit at a time. Those eight mouths are based on the classic **Preston Blair** set that cartoon animators use (with O and U sharing one mouth), so every speech sound maps straight onto one row.
+A mouth shape is just one row lit at a time.
+
+### The mouths: the Preston Blair set
+
+The mouth rows follow the **Preston Blair** set, named for the Disney animator whose animation books popularized it. It's the closest thing lip-sync has to an industry standard: Papagayo, xLights and most singing-face props use the same ten positions.
+
+| Position | Sounds like | Our row |
+| --- | --- | --- |
+| AI | **a**h, c**a**t, m**y**, s**i**t | Mouth AI |
+| E | b**e**d, s**ee**, and most hard consonants (t, d, k, g) | Mouth E |
+| O | b**ou**ght | Mouth OU |
+| U | b**oo**t, b**oo**k, n**ow** | Mouth OU |
+| etc | n, s, z | Mouth etc |
+| L | **l**, **r**, **th**e | Mouth L |
+| WQ | **w**e, g**o**, b**oy**, h**er**, **sh**e, **ch**ip | Mouth WQ |
+| MBP | **m**, **b**, **p** (lips together) | Mouth MBP |
+| FV | **f**, **v** (teeth on lip) | Mouth FV |
+| rest | silence | Mouth Closed |
+
+Our trees have one mouth for both O and U, so those two positions share a row. If your props have separate O and U mouths, use them both.
+
+### The phonemes: from words to mouths
+
+A mouth shape follows a *sound*, not a letter. "Though" and "tough" end in the same letters but need different mouths. So each word is first broken into **phonemes**, the individual speech sounds, using the **CMU Pronouncing Dictionary**. It's the standard free dictionary for American English and covers about 134,000 words. Each sound is written in **ARPAbet**, the notation speech researchers use: "believe" becomes `B IH L IY V`.
+
+Each phoneme then maps to one mouth using the conversion table that ships with Papagayo:
+
+| Mouth | CMU phonemes |
+| --- | --- |
+| AI | AA, AE, AY, IH |
+| E | AH, EH, EY, IY, Y, D, T, TH, G, K, NG, HH |
+| O | AO |
+| U | AW, UH, UW |
+| etc | N, S, Z |
+| L | L, R, DH |
+| WQ | W, OW, OY, ER, CH, JH, SH, ZH |
+| MBP | M, B, P |
+| FV | F, V |
+| rest | silence between words |
+
+So "believe" plays as MBP, AI, L, E, FV. Using the standard table instead of inventing our own means a `.pgo` built here opens correctly in Papagayo, and anyone with Preston Blair mouths can use it.
 
 ### The phoneme file
 
@@ -71,7 +111,7 @@ Everything runs on the show computer, and all of it is free:
 - **UVR** (Ultimate Vocal Remover models) pulls the vocals out of the song.
 - **Whisper** (OpenAI's speech recognition, run locally) transcribes the words.
 - **wav2vec2** lines the lyric sheet up against the vocal track, word by word.
-- **CMU Pronouncing Dictionary** turns words into speech sounds.
+- **CMU Pronouncing Dictionary** turns words into phonemes (speech sounds).
 - A handful of **Python scripts** Claude wrote tie it together and write the LOR file.
 
 I didn't install or wire any of this up myself. Claude did, in a project folder on my show computer, and explained each piece as it went.
@@ -89,11 +129,11 @@ There are two halves. First, turn the song into timing. Then, turn the timing in
 3. **Transcribe.** Whisper listens to the vocal track and writes down the words it hears, with rough times.
 4. **Align.** wav2vec2 matches *my lyric sheet* against the vocal track and finds where each word really starts and ends. This is much more accurate than Whisper's times.
 5. **Fix and check.** A small fix-up script trims words that hang open through a breath, and a checker compares every repeated chorus line with the first time it was sung. Repeats should match within about 0.06 seconds.
-6. **Build the `.pgo`.** Words become speech sounds, speech sounds become Preston Blair mouth shapes, at 20 fps.
+6. **Build the `.pgo`.** Words become CMU phonemes, and phonemes become Preston Blair mouths using the standard table above, at 20 fps.
 
 **Half 2: `.pgo` to sequence**
 
-7. **Survey the sequence.** Claude checks that the FaceV2 rows exist and whether anything is already on them. If the mouths are already full (a purchased sequence with faces, say), it asks before replacing anything.
+7. **Survey the sequence.** Claude checks that the FaceV2 rows exist and whether anything is already on them. If the mouths already have effects on them (faces I placed by hand in an earlier year, say), it asks before replacing anything.
 8. **Write the faces.** One script reads `faces.json` and the `.pgo` and writes the mouth, eye and outline effects. A dry run first prints when each tree is awake, so I can sanity-check it against the song.
 9. **Verify.** The script re-reads its own output and confirms that every other prop and every other part of the file is byte-for-byte unchanged. If not, it says "VERIFY FAILED" and the file isn't used.
 10. **I check it in LOR, then copy it back myself.** I open the copy in LOR and watch it with the music. After I'm satisfied with the results, I copy it back to my live Sequences folder so I can add it to the show.
@@ -150,7 +190,7 @@ The lyric sheet is what the alignment step lines up against, so it matters more 
 
 A couple of tricks:
 
-- **Phonetic spellings are fine**, sometimes better, because the mouth shapes come from the letters. "Chingedy" and "paisans" work great in *Dominic the Donkey*.
+- **Phonetic spellings are fine**, sometimes better. The mouths come from how a word is pronounced, and for words the dictionary doesn't know, a phonetic spelling gets the guess right. "Chingedy" and "paisans" work great in *Dominic the Donkey*.
 - Spell out "la la la" as separate words.
 - If I'd rather not supply a sheet, Claude can use Whisper's transcript of my own audio instead, show it to me, and take my corrections.
 
@@ -184,7 +224,7 @@ Once the timing exists, it can drive more than the trees. Two experiments:
 
 New to this? Start with [Getting Started](getting-started.md) to set up VS Code, Claude, Python and ffmpeg.
 
-You'll need singing-face props in LOR (any set of plain-channel rows per mouth shape will do; ours follow the Preston Blair shapes), Visual Studio Code with the **Claude Code** extension, and the MP3s for your show.
+You'll need singing-face props in LOR (any set of plain-channel rows per mouth shape will do, but the standard Preston Blair set makes everything easiest), Visual Studio Code with the **Claude Code** extension, and the MP3s for your show.
 
 ### Tips
 
@@ -201,7 +241,7 @@ Open your **project folder** in VS Code. This is the folder where you made copie
 ```text
 I run a Christmas light show with Light-O-Rama [version, e.g. S6 Pro]. I have singing-face
 props: [describe them, e.g. "four trees, each with an outline, eyes open/closed, and
-Preston Blair mouth rows: AI, E, OU, L, WQ, MBP, FV, etc, closed"]. I'm not a programmer,
+Preston Blair mouth rows: AI, E, O, U, etc, L, WQ, MBP, FV, rest"]. I'm not a programmer,
 so please explain things in plain language and ask me before making decisions that are mine.
 
 Goal: lip-sync my singing faces to a song in an existing sequence.
@@ -209,7 +249,9 @@ Sequence: [file name]. Audio: [MP3 name]. Lead singer: [which prop sings].
 
 How it should work:
 - Separate the vocals from my MP3, transcribe them, then align my lyric sheet to the vocal
-  track to get word timing. Build a Papagayo .pgo file at 20 fps (matching LOR's 0.05 s grid).
+  track to get word timing. Break the words into CMU dictionary phonemes and map them to
+  Preston Blair mouths with Papagayo's standard table. Build a Papagayo .pgo file at 20 fps
+  (matching LOR's 0.05 s grid).
 - Turn the .pgo into effects on my face rows: one mouth row lit at a time, eyes blinking,
   long held vowels shimmering. Props that aren't singing should look asleep.
 

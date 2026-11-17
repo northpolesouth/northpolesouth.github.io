@@ -12,5 +12,6 @@ Here's what's inside:
 
 - **[Getting Started](getting-started.md)** — Start here. Set up VS Code, Claude, Codex and Python, in plain English.
 - **[Light-O-Rama Live Playlist](live-lor-playlist.md)** — A Now Playing and Up Next web page visitors open on their phones.
+- **[A Sequence from Scratch](sequence-from-scratch.md)** — Claude builds a whole song from an empty sequence, in your show's own style.
 - **[Singing Faces with Claude](singing-faces.md)** — Lip-synced singing trees from a song's vocals.
 - **[Singing Elf Matrix Video](singing-elf-matrix-video.md)** — Claude writes the prompt, Codex draws the elf and builds the MP4 for the pixel matrix.
